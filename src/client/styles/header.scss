@@ -2,4 +2,16 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 10px 40px;
+  background-color: #f3f3f3;
+  border: 1px solid #e7e7e7;
+  padding: 0.5em;
+
+  p {
+    line-height: 2;
+  }
+  nav {
+    color: white;
+    background-color: #008cba;
+    cursor: pointer;
+  }
 }
