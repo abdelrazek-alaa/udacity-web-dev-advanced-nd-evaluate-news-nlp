@@ -3,10 +3,19 @@ const express = require("express");
 const mockAPIResponse = require("./mockAPI.js");
 const dotenv = require("dotenv");
 dotenv.config();
+const bodyParser = require("body-parser");
+
+/*Variables*/
+const baseUrl = "https://api.meaningcloud.com/sentiment-2.1";
+const ApiKey = process.env.API_KEY;
 
 const app = express();
 
 app.use(express.static("dist"));
+
+// configure express to use body-parser as middle-ware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 console.log(__dirname);
 
@@ -22,4 +31,9 @@ app.listen(8081, function () {
 
 app.get("/test", function (req, res) {
   res.send(mockAPIResponse);
+});
+
+app.post("/postData", function (req, res) {
+  const urlValue = req.body.url;
+  console.log(urlValue);
 });
