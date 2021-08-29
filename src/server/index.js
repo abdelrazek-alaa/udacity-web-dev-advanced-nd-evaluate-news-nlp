@@ -4,6 +4,7 @@ const mockAPIResponse = require("./mockAPI.js");
 const dotenv = require("dotenv");
 dotenv.config();
 const bodyParser = require("body-parser");
+const fetch = require("node-fetch");
 
 /*Variables*/
 const baseUrl = "https://api.meaningcloud.com/sentiment-2.1";
@@ -34,6 +35,20 @@ app.get("/test", function (req, res) {
 });
 
 app.post("/postData", function (req, res) {
-  const urlValue = req.body.url;
-  console.log(urlValue);
+  const articleUrl = req.body.url;
+  const apiUrl = `${baseUrl}?key=${ApiKey}&url=${articleUrl}&lang=en`;
+
+  fetch(apiUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      const { score_tag, agreement, subjectivity, confidence, irony } = data;
+      res.json({
+        score_tag: score_tag,
+        agreement: agreement,
+        subjectivity: subjectivity,
+        confidence: confidence,
+        irony: irony,
+      });
+    });
+  console.log(articleUrl);
 });
