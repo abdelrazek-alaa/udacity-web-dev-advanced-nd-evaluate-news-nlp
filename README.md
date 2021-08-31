@@ -1,6 +1,6 @@
 # Evaluate a News Article with Natural Language Processing
 
-This project aims to build a web app that allows users to run Natural Language Processing (NLP) on articles or blogs. When a user submits a URL of an article, the web page then dispalys sentiment analysis returned from meaningcloud API, based on the contents of the article.
+This web app allows users to run Natural Language Processing (NLP) on articles or blogs. When a user submits a URL of an article, the web page then dispalys sentiment analysis returned from meaningcloud API, based on the contents of the article.
 
 ## technologies used
 
